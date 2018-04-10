@@ -26,7 +26,7 @@ Fill out `config.js` as your infomation.
 * `inviteToken`: An optional security measure - if it is set, then that token will be required to get invited.
 * `recaptchaSiteKey`: An optional security measure - if it is set, and `recaptchaSecretKey` is set, then a captcha will be required to get invited.
 * `recaptchaSecretKey`: An optional security measure - if it is set, and `recaptchaSiteKey` is set, then a captcha will be required to get invited.
-* `locale`: Application language (currently `cs`, `de`, `en`, `es`, `fr`, `it`,  `ja`, `ko`, `pl`, `pt`, `pt-BR`, `tr`, `zh-CN` and `zh-TW` available).
+* `locale`: Application language (currently `cs`, `de`, `en`, `es`, `fr`, `it`,  `ja`, `ko`, `nl`, `pl`, `pt`, `pt-BR`, `tr`, `zh-CN` and `zh-TW` available).
 
 ### Environment Variables
 You can set environment variables directly or in `.env` file.
@@ -39,7 +39,7 @@ If you want to use a `.env` file, create a file in the root called `.env` with t
 - `INVITE_TOKEN`: An optional security measure - if it is set, then that token will be required to get invited.
 - `RECAPTCHA_SITE`: An optional security measure - used to enable reCAPTCHA.
 - `RECAPTCHA_SECRET`: An optional security measure - used to enable reCAPTCHA.
-- `LOCALE`: Application language (currently `cs`, `de`, `en`, `es`, `fr`, `it`, `ja`, `ko`, `pl`, `pt`, `pt-BR`, `tr`, `zh-CN` and `zh-TW` available).
+- `LOCALE`: Application language (currently `cs`, `de`, `en`, `es`, `fr`, `it`, `ja`, `ko`, `nl`, `pl`, `pt`, `pt-BR`, `tr`, `zh-CN` and `zh-TW` available).
 
 **Sample**
 
@@ -80,6 +80,14 @@ You can access <http://localhost:3000> on your web browser.
 ## Run with Docker
 
 It's easy to run this service if you have installed Docker on your system.
+Pull [the Docker image from Docker Hub](https://hub.docker.com/r/outsideris/slack-invite-automation/).
+
+```shell
+$ docker pull outsideris/slack-invite-automation
+$ docker run -it --rm -e COMMUNITY_NAME="YOUR-TEAM-NAME" -e SLACK_URL="YOUR-TEAM.slack.com" -e SLACK_TOKEN="YOUR-ACCESS-TOKEN" -p 3000:3000 outsideris/slack-invite-automation
+```
+
+Or, You can build a Docker image yourself.
 
 ```shell
 $ git clone https://github.com/outsideris/slack-invite-automation.git
@@ -120,3 +128,14 @@ There are two ways to issue the access token.
     * It authorizes the `client` permission. Otherwise, you can see `{"ok":false,"error":"missing_scope","needed":"client","provided":"admin"}` error.
     * Your `CLIENT_ID` could be found in "Basic Information" menu of your app page that you just install.
     * Your `TEAM_ID` could be found in <https://api.slack.com/methods/team.info/test>
+
+## Badge
+
+![](https://raw.github.com/outsideris/slack-invite-automation/master/screenshots/badge.png)
+
+You can use the badge to show status of user in your slack.
+
+```
+<img src="https://your.domain/badge.svg">
+```
+
